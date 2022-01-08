@@ -49,30 +49,7 @@ create table book_authors
   primary key (isbn, author_id)
 );
 
-create table book_order
-(
-  order_id      int auto_increment primary key,
-  isbn          int,
-  quantity      int,
-  date          date,
-  foreign key (isbn) references book (isbn)
-);
-/*************************** Part 1 : II.Operations ******************************/
--- Operations    --TODO
-
--- Add new books
--- Modify existing books
--- Place orders on books
--- Confirm orders
--- Search for books
-
 /**************************** Part 2 : Schema ***********************************/
-create table user_access
-(
-  user_id    int primary key auto_increment,
-  privilege  boolean
-);
-
 create table user_info
 (
   user_id    int primary key auto_increment,
@@ -82,21 +59,30 @@ create table user_info
   last_name  varchar(50),
   email      varchar(255) UNIQUE,
   phone      varchar(20),
-  shipping_address varchar(100),
-  foreign key (user_id) references user_access (user_id)
+  Shipping_address varchar(100),
+  privilege  boolean
+);
+
+create table book_order
+(
+  order_id      int auto_increment primary key,
+  customer_id int,
+  isbn          int,
+  quantity      int,
+  Shipping_address varchar(100),
+  date          date,
+  foreign key (isbn) references book (isbn),
+  foreign key (customer_id) references user_info (user_id)
 );
 
 create table credit_card
 (
   user_id      int,
   card_number  bigint,
-  cvv_number   int,
   expiry_date  Date,
   primary key (user_id, card_number),
   foreign key (user_id) references user_info (user_id)
 );
 
--- TODO 
--- customer_orders
--- shopping_cart
--- edit the above book_order
+alter table book
+  add foreign key (publisher_id) references publisher (publisher_id);
