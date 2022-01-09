@@ -1,7 +1,7 @@
 package com.example.bookstore.model;
 
 public class User {
-    private int user_id;
+    private Integer user_id;
     private String user_name;
     private String password;
     private String last_name;
@@ -9,9 +9,10 @@ public class User {
     private String email;
     private String shipping_address;
     private boolean privilege;
+    private String phone;
     private Integer total_purchases;
 
-    public User(String userName, String password, String shippingAddress, String lastName, String firstName, String email, boolean privilege) {
+    public User(String userName, String password, String shippingAddress, String lastName, String firstName, String email, boolean privilege,String phone) {
         this.user_name = userName;
         this.password = password;
         this.shipping_address = shippingAddress;
@@ -20,10 +21,19 @@ public class User {
         this.email = email;
         this.privilege = privilege;
         total_purchases = 0;
+        this.phone=phone;
     }
 
     public User() {
 
+    }
+
+    public Integer getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
     }
 
     public Integer getTotal_purchases() {
@@ -44,6 +54,15 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+
+    public String getPhone() {
+        return phone;
     }
 
     public void setPassword(String password) {
