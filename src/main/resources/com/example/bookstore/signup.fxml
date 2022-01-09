@@ -42,7 +42,7 @@
                   <TextField fx:id="firstName" layoutX="60.0" layoutY="134.0" prefHeight="26.0" prefWidth="110.0" promptText="First Name" style="-fx-border-radius: 50;" />
                   <TextField fx:id="lastName" layoutX="195.0" layoutY="134.0" prefHeight="26.0" prefWidth="105.0" promptText="Last Name" style="-fx-border-radius: 50;" />
                   <TextField fx:id="username" layoutX="60.0" layoutY="180.0" prefHeight="26.0" prefWidth="239.0" promptText="Username" style="-fx-border-radius: 50;" />
-                  <TextField layoutX="60.0" layoutY="223.0" prefHeight="26.0" prefWidth="240.0" promptText="Email" style="-fx-border-radius: 50;" />
+                  <TextField fx:id="emailText" layoutX="60.0" layoutY="223.0" prefHeight="26.0" prefWidth="240.0" promptText="Email" style="-fx-border-radius: 50;" />
                   <PasswordField fx:id="password" alignment="TOP_LEFT" layoutX="60.0" layoutY="273.0" prefHeight="26.0" prefWidth="241.0" promptText="Password" style="-fx-border-radius: 50;" />
                   <TextField fx:id="phone" layoutX="60.0" layoutY="319.0" prefHeight="26.0" prefWidth="240.0" promptText="Phone" style="-fx-border-radius: 50;" />
                   <TextField fx:id="address" layoutX="60.0" layoutY="368.0" prefHeight="26.0" prefWidth="240.0" promptText="Address" style="-fx-border-radius: 50;" />

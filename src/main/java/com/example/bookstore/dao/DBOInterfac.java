@@ -15,4 +15,5 @@ public interface DBOInterfac {
     boolean addNewUserWithInfo(String userName, String password, String shippingAddress, String lastName,
                                      String firstName, String email, boolean privilege,String phone);
 
+
 }
