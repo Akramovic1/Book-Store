@@ -85,6 +85,8 @@ public class DBO implements DBOInterfac{
         }
     }
 
+
+
     public void insertRecordsInPUBLISHER() {
         for (int i  = 1 ; i < 10 ; i++) {
             String sql = "insert into PUBLISHER (publisher_id,publisher_name,publisher_address,publisher_phone)values("+i+",\""+("PUBLISHER "+Integer.toString(i))+"\",\""+(Integer.toString(i)+" Alexandria")+"\","+i+")";

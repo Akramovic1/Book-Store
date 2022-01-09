@@ -1,23 +1,24 @@
 package com.example.bookstore.model;
 
 public class User {
+    private int user_id;
     private String user_name;
     private String password;
     private String last_name;
     private String first_name;
     private String email;
     private String shipping_address;
-    private Integer manager;
+    private boolean privilege;
     private Integer total_purchases;
 
-    public User(String userName, String password, String shippingAddress, String lastName, String firstName, String email, Integer manager) {
+    public User(String userName, String password, String shippingAddress, String lastName, String firstName, String email, boolean privilege) {
         this.user_name = userName;
         this.password = password;
         this.shipping_address = shippingAddress;
         this.last_name = lastName;
         this.first_name = firstName;
         this.email = email;
-        this.manager = manager;
+        this.privilege = privilege;
         total_purchases = 0;
     }
 
@@ -82,11 +83,11 @@ public class User {
         this.email = email;
     }
 
-    public Integer isManager() {
-        return manager;
+    public boolean isManager() {
+        return privilege;
     }
 
-    public void setManager(Integer manager) {
-        this.manager = manager;
+    public void setPrivilege(boolean privilege) {
+        this.privilege = privilege;
     }
 }
