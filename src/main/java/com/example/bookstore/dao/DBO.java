@@ -3,6 +3,7 @@ package com.example.bookstore.dao;
 import com.example.bookstore.model.Author;
 import com.example.bookstore.model.Book;
 import com.example.bookstore.model.Publisher;
+import com.example.bookstore.model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -83,6 +84,29 @@ public class DBO implements DBOInterfac{
                     category, publisher, publicationYear, price, authors);
             return addNewBook(book);
         }
+    }
+
+    private boolean isCompleteUser(User user){
+        return user.getUser_name()!=null&&user.getPassword()!=null&&user.getLast_name()!=null&&user.getFirst_name()!=null&&
+                user.getEmail()!=null&&user.getShipping_address()!=null&&user.getUser_id()!=null&&user.getTotal_purchases()!=null
+                &&user.getPhone()!=null;
+    }
+
+    public boolean addNewUser(User user){
+        if (isCompleteUser(user)) {
+            String sql = "insert into user_info (user_id,user_name,password,first_name,last_name,email,phone,Shipping_address,privilege)values(\""
+                    + user.getUser_id() + "\",\"" + user.getUser_name() + "\",\"" + user.getPassword() + "\"," + user.getFirst_name() + ",\"" + user.getLast_name() +
+                    "\",\"" + user.getEmail() + "\",\"" + user.getPhone() + "\",\"" + user.getShipping_address() +"\",\""+user.isManager()+ "\")";
+            return executeUpdate(sql);
+        }
+        else return false;
+    }
+
+    public boolean addNewUserWithInfo(String userName, String password, String shippingAddress, String lastName,
+                                      String firstName, String email, boolean privilege,String phone){
+        User user=new User(userName,password, shippingAddress, lastName, firstName, email,privilege,phone);
+        return addNewUser(user);
+
     }
 
     public void insertRecordsInPUBLISHER() {
