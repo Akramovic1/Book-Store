@@ -6,7 +6,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
-public class SignUp {
+public class SignUpController {
     @FXML
     private Pane email;
 

@@ -6,7 +6,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.w3c.dom.Text;
 
-public class SignIn {
+public class SignInController {
     @FXML
     private Button signupInLogin_btn;
 
