@@ -29,7 +29,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Button fx:id="add_btn" layoutX="108.0" layoutY="348.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" style="-fx-background-radius: 50;" text="ADD" />
+            <Button fx:id="add_btn" layoutX="108.0" layoutY="348.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" style="-fx-background-radius: 50; -fx-background-color: #00BF00; -fx-text-fill: white;" text="ADD" />
             <TextField fx:id="isbn" layoutX="33.0" layoutY="77.0" prefHeight="25.0" prefWidth="227.0" promptText="Book’s ISBN number" style="-fx-background-radius: 35;" />
             <TextField fx:id="title" layoutX="33.0" layoutY="115.0" prefHeight="25.0" prefWidth="227.0" promptText="Book title" style="-fx-background-radius: 35;" />
             <TextField fx:id="author" layoutX="33.0" layoutY="150.0" prefHeight="25.0" prefWidth="227.0" promptText="Book author" style="-fx-background-radius: 35;" />
