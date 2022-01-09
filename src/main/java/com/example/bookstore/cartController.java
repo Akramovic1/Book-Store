@@ -18,5 +18,5 @@ public class cartController {
 
     @FXML
     private Label totalPrice;
-    
+
 }

@@ -1,5 +1,7 @@
 package com.example.bookstore;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -30,4 +32,13 @@ public class SignUpController {
 
     @FXML
     private Button SignUp_btn;
+
+    void setSignUp_btn(){
+        SignUp_btn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                System.out.println("Accepted");
+            }
+        });
+    }
 }
