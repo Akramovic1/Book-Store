@@ -32,6 +32,18 @@ public class updating implements updatingInterface{
         }
     }
 
+    public boolean updateUserName(int user_id,String user_name){
+        try {
+            String sql="update user_info set user_name = "+user_name+" where user_id = "+user_id;
+            statement.executeUpdate(sql);
+            return true;
+        }
+        catch (Exception e){
+            //e.printStackTrace();
+            return false;
+        }
+    }
+
 
     public static void main(String[] args)  {
         updating u = new updating();
