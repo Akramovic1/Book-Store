@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="890.0" prefWidth="1315.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="1315.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="80.0" prefWidth="215.0" text="Book Store" textFill="#ff5056">
+               <font>
+                  <Font name="Edwardian Script ITC" size="41.0" />
+               </font>
+            </Label>
+            <Separator maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="78.0" prefWidth="11.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Separator>
+            <Pane prefHeight="80.0" prefWidth="1089.0" styleClass="white-background" stylesheets="@style.css">
+               <children>
+                  <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="924.0" layoutY="17.0">
+                     <image>
+                        <Image url="@images/1024px-Circle-icons-profile.svg.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="41.0" fitWidth="40.0" layoutX="858.0" layoutY="18.0">
+                     <image>
+                        <Image url="@images/134-1344540_free-shopping-cart-png-small-shopping-cart-icon.jpg" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="profile_btn" layoutX="924.0" layoutY="16.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: transparent;" />
+                  <Button fx:id="cart_btn" layoutX="853.0" layoutY="16.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="49.0" style="-fx-background-color: transparent; -fx-text-fill: transparent;" />
+                  <TextField layoutX="43.0" layoutY="27.0" prefHeight="27.0" prefWidth="352.0" promptText="Search" style="-fx-background-color: transparent; -fx-border-color: #D7D7D7; -fx-border-radius: 50;" stylesheets="@style.css" />
+                  <FontAwesomeIconView glyphName="SEARCH" layoutX="367.0" layoutY="43.0" wrappingWidth="17.0" />
+                  <ImageView fitHeight="47.0" fitWidth="38.0" layoutX="1037.0" layoutY="15.0">
+                     <image>
+                        <Image url="@images/339-3396821_png-file-svg-download-icon-logout-transparent-png.jpg" />
+                     </image>
+                  </ImageView>
+                  <Separator layoutX="998.0" layoutY="9.0" orientation="VERTICAL" prefHeight="63.0" prefWidth="7.0" />
+                  <Button fx:id="logout_btn" layoutX="1032.0" layoutY="16.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="49.0" style="-fx-background-color: transparent; -fx-text-fill: transparent;" />
+               </children>
+            </Pane>
+         </children>
+      </HBox>
+   </top>
+   <left>
+      <Pane prefHeight="810.0" prefWidth="226.0" styleClass="white-background" stylesheets="@style.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="20.0" layoutY="69.0" prefHeight="53.0" prefWidth="84.0" text="BROWSE" textAlignment="JUSTIFY">
+               <font>
+                  <Font name="Eras Light ITC" size="20.0" />
+               </font>
+            </Label>
+            <Pane layoutX="5.0" layoutY="142.0" prefHeight="362.0" prefWidth="213.0">
+               <children>
+                  <Button layoutX="8.0" layoutY="14.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Button" />
+                  <Button layoutX="8.0" layoutY="80.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Button" />
+                  <Button layoutX="8.0" layoutY="140.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Button" />
+                  <Button layoutX="8.0" layoutY="201.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Button" />
+                  <Button layoutX="8.0" layoutY="261.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Button" />
+                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="8.0" layoutY="14.0">
+                     <image>
+                        <Image url="@images/62984-200.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="37.0" fitWidth="35.0" layoutX="20.0" layoutY="145.0">
+                     <image>
+                        <Image url="@images/download.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="16.0" layoutY="264.0">
+                     <image>
+                        <Image url="@images/445837-200.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="29.0" fitWidth="32.0" layoutX="16.0" layoutY="210.0">
+                     <image>
+                        <Image url="@images/158-1589000_game-history-history-icon-vector.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="32.0" fitWidth="30.0" layoutX="20.0" layoutY="90.0">
+                     <image>
+                        <Image url="@images/painting-icon-art-gallery-icon-11553392499462866ojse.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Button layoutX="62.0" layoutY="651.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #00BF00; -fx-text-fill: #fff; -fx-background-radius: 50;" text="ADD Book" />
+            <Button layoutX="63.0" layoutY="696.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #C80D32; -fx-text-fill: #fff; -fx-background-radius: 50;" text="Remove Book" />
+            <Separator layoutX="209.0" orientation="VERTICAL" prefHeight="802.0" prefWidth="24.0" />
+         </children>
+      </Pane>
+   </left>
+   <center>
+      <Pane prefHeight="810.0" prefWidth="1095.0" BorderPane.alignment="CENTER">
+         <children>
+            <Separator layoutX="4.0" prefHeight="17.0" prefWidth="1089.0" />
+            <Label layoutX="38.0" layoutY="49.0" text="Books">
+               <font>
+                  <Font name="System Bold" size="29.0" />
+               </font>
+            </Label>
+            <ScrollPane layoutX="21.0" layoutY="122.0" prefHeight="660.0" prefWidth="1054.0" style="-fx-background-color: #fff;" vbarPolicy="ALWAYS" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
