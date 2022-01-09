@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="748.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bookstore.HelloController">
+   <children>
+      <BorderPane prefHeight="519.0" prefWidth="748.0">
+         <left>
+            <Pane prefHeight="524.0" prefWidth="372.0" style="-fx-background-color: EBC5B2;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="261.0" fitWidth="366.0" layoutX="6.0" layoutY="145.0">
+                     <image>
+                        <Image url="@images/book-login.jpg" />
+                     </image>
+                  </ImageView>
+                  <Pane layoutY="402.0" prefHeight="117.0" prefWidth="372.0" style="-fx-background-color: EECABA;">
+                     <children>
+                        <Text layoutX="42.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have account ?" />
+                        <Button fx:id="signupInLogin_btn" layoutX="209.0" layoutY="35.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="71.0" style="-fx-background-color: EAA212;" text="Sign up">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children></Pane>
+                  <Text layoutX="107.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book Store" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="164.11328125">
+                     <font>
+                        <Font name="Berlin Sans FB" size="34.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+         </left>
+         <center>
+            <Pane prefHeight="519.0" prefWidth="386.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+               <children>
+                  <Text layoutX="119.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign in" textAlignment="CENTER" wrappingWidth="137.271484375">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="forget_password" layoutX="146.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forget Password">
+                     <font>
+                        <Font name="System Italic" size="11.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="loginMail" layoutX="79.0" layoutY="192.0" prefHeight="26.0" prefWidth="206.0" promptText="Email" />
+                  <PasswordField fx:id="loginPassword" layoutX="79.0" layoutY="247.0" prefHeight="26.0" prefWidth="211.0" promptText="Password" />
+                  <Button fx:id="SignIn_btn" layoutX="104.0" layoutY="359.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="156.0" style="-fx-background-color: EECABA; -fx-text-fill: black;" text="Sign in" />
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

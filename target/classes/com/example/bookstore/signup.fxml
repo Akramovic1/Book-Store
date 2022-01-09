@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="748.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane prefHeight="519.0" prefWidth="748.0">
+         <left>
+            <Pane prefHeight="524.0" prefWidth="372.0" style="-fx-background-color: EBC5B2;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="261.0" fitWidth="366.0" layoutX="6.0" layoutY="145.0">
+                     <image>
+                        <Image url="@images/book-login.jpg" />
+                     </image>
+                  </ImageView>
+                  <Pane layoutY="402.0" prefHeight="117.0" prefWidth="372.0" style="-fx-background-color: EECABA;" />
+                  <Text layoutX="107.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book Store" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="164.11328125">
+                     <font>
+                        <Font name="Berlin Sans FB" size="34.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+         </left>
+         <right>
+            <Pane prefHeight="519.0" prefWidth="376.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+               <children>
+                  <Text layoutX="14.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign up" textAlignment="CENTER" wrappingWidth="137.271484375">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <TextField layoutX="60.0" layoutY="134.0" prefHeight="26.0" prefWidth="110.0" promptText="First Name" />
+                  <TextField layoutX="195.0" layoutY="134.0" prefHeight="26.0" prefWidth="105.0" promptText="Last Name" />
+                  <TextField layoutX="60.0" layoutY="180.0" prefHeight="26.0" prefWidth="239.0" promptText="Username" />
+                  <TextField layoutX="60.0" layoutY="223.0" prefHeight="26.0" prefWidth="240.0" promptText="Email" />
+                  <PasswordField alignment="TOP_LEFT" layoutX="60.0" layoutY="273.0" prefHeight="26.0" prefWidth="241.0" promptText="Password" />
+                  <TextField layoutX="60.0" layoutY="319.0" prefHeight="26.0" prefWidth="240.0" promptText="Phone" />
+                  <TextField layoutX="60.0" layoutY="368.0" prefHeight="26.0" prefWidth="240.0" promptText="Address" />
+                  <JFXButton layoutX="117.0" layoutY="445.0" prefHeight="30.0" prefWidth="142.0" style="-fx-background-color: EECABA; -fx-text-fill: BLACK;" text="Sign Up" />
+               </children>
+            </Pane>
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>
