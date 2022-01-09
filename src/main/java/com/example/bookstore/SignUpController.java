@@ -39,6 +39,9 @@ public class SignUpController {
 
     @FXML
     private Button SignUp_btn;
+    
+    @FXML
+    private Button signin;
 
     private boolean correctEmailAddress(String email){
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
