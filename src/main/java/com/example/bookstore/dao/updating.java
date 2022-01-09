@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class updating {
+public class updating implements updatingInterface{
     private Connection connection;
     private Statement statement;
     public updating(){
@@ -32,25 +32,6 @@ public class updating {
         }
     }
 
-    public List<Book> searchBookWithISBNAndTittle(Integer isbn,String title){
-        List<Book> books=new ArrayList<>();
-        selecting select = new selecting();
-        if (isbn==null&&title==null){
-            return books;
-        }
-        else if (isbn!=null&&title!=null){
-            return select.getBooksByISBNAndTitle(isbn,title);
-        }
-        else if (title!=null){
-            return select.getBooksByTitle(title);
-        }
-        else {
-            Book b=select.getBook(isbn);
-            if (b!=null)
-                books.add(b);
-            return books;
-        }
-    }
 
     public static void main(String[] args)  {
         updating u = new updating();

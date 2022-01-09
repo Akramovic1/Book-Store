@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class selecting {
+public class selecting implements selectingInterface{
     private Connection connection;
     private Statement statement;
     public selecting(){
@@ -113,6 +113,25 @@ public class selecting {
         return books;
     }
 
+    public List<Book> searchBookWithISBNAndTittle(Integer isbn,String title){
+        List<Book> books=new ArrayList<>();
+        if (isbn==null&&title==null){
+            return books;
+        }
+        else if (isbn!=null&&title!=null){
+            return getBooksByISBNAndTitle(isbn,title);
+        }
+        else if (title!=null){
+            return getBooksByTitle(title);
+        }
+        else {
+            Book b=getBook(isbn);
+            if (b!=null)
+                books.add(b);
+            return books;
+        }
+    }
+
     public List<Book> getBooksByISBNAndTitle(int isbn,String title){
         List<Book> books=new ArrayList<>();
         try {
@@ -149,6 +168,8 @@ public class selecting {
         }
         return books;
     }
+
+
 
     public static void main(String[] args) {
         selecting s= new selecting();
