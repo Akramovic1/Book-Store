@@ -41,5 +41,4 @@ public class SignUpController {
         String pwrd=password.getText();
 
     }
-
 }
