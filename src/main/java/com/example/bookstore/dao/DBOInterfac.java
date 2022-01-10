@@ -1,5 +1,6 @@
 package com.example.bookstore.dao;
 
+import com.example.bookstore.UserSession;
 import com.example.bookstore.model.Author;
 import com.example.bookstore.model.Book;
 import com.example.bookstore.model.Publisher;
@@ -22,5 +23,8 @@ public interface DBOInterfac {
 
     Publisher insertNewPublisher(String publisher_name,String publisher_address,String publisher_phone);
     Author insertNewAuthor(String author_Name);
+
+    boolean confirmOrder(int orderID);
+    boolean payForBook(UserSession userSession, int cardNo, String ExpiryDate);
 
 }

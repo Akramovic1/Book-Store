@@ -5,10 +5,7 @@ import com.example.bookstore.model.Book;
 import com.example.bookstore.model.Publisher;
 
 import java.security.KeyStore;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -254,7 +251,39 @@ public class selecting implements selectingInterface{
         return books;
     }
 
+    @Override
+    public List<Author> getAllAuthors() {
+        String query = "Select * from authors";
+        List<Author> authors = new ArrayList<>();
+        try {
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next())
+                authors.add(new Author(resultSet.getInt("author_id"),
+                        resultSet.getString("author_name")));
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return authors;
+    }
+
+    @Override
+    public List<Publisher> getAllPublishers() {
+        String query = "Select * from publisher";
+        List<Publisher> publishers = new ArrayList<>();
+        try {
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next())
+                publishers.add(new Publisher(resultSet.getInt("publisher_id"),
+                        resultSet.getString("publisher_address"),
+                        resultSet.getString("publisher_name"),
+                        resultSet.getString("publisher_phone")));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return publishers;
+    }
 
     public static void main(String[] args) {
         selecting s= new selecting();

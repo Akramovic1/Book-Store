@@ -1,13 +1,13 @@
 package com.example.bookstore.dao;
 
+import com.example.bookstore.UserSession;
 import com.example.bookstore.model.Author;
 import com.example.bookstore.model.Book;
 import com.example.bookstore.model.Publisher;
 import com.example.bookstore.model.User;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class DBO implements DBOInterfac{
     private Connection connection;
@@ -158,6 +158,51 @@ public class DBO implements DBOInterfac{
             }
         }
     }
+
+    @Override
+    public boolean confirmOrder(int orderID) {
+        String query = "delete from book_order where order_id = ?";
+        try {
+            PreparedStatement pStatement = connection.prepareStatement(query);
+            pStatement.setInt(1, orderID);
+            pStatement.execute();
+            pStatement.close();
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean payForBook(UserSession userSession, int cardNo, String ExpiryDate) {
+        int userId = userSession.getUser().getUser_id();
+        addCreditCard(userId, cardNo, ExpiryDate);
+        HashMap<Book, Integer> cart = userSession.getCart();
+        updating u = new updating();
+        HashSet<Book> temp = new HashSet<>();
+//        cart.forEach((key, val) -> temp.add(key.getISBN()));
+        for (Map.Entry<Book, Integer> entry : cart.entrySet()) {
+            if (u.updateBookNumOfCopies(entry.getKey().getISBN(), entry.getValue()))
+                temp.add(entry.getKey());
+        }
+        temp.forEach(cart::remove);
+        return cart.isEmpty();
+    }
+
+    private void addCreditCard(int userId, int cardNo, String ExpiryDate) {
+        String query = "insert into credit_card values(?, ?, ?)";
+        try {
+            PreparedStatement pStatement = connection.prepareStatement(query);
+            pStatement.setInt(1, userId);
+            pStatement.setInt(2, cardNo);
+            pStatement.setString(3, ExpiryDate);
+            pStatement.execute();
+            pStatement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) throws SQLException {
         DBO dbo=new DBO();
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "test", "test");
