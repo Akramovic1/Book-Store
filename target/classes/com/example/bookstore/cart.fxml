@@ -22,7 +22,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="addBookCart_btn" layoutX="520.0" layoutY="342.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #00BF00; -fx-text-fill: #fff; -fx-background-radius: 50;" text="PAY" />
+      <Button fx:id="addBookCart_btn" layoutX="520.0" layoutY="342.0" mnemonicParsing="false" onMouseClicked="#openCheckoutBtn" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #00BF00; -fx-text-fill: #fff; -fx-background-radius: 50;" text="PAY" />
       <ImageView fitHeight="23.0" fitWidth="28.0" layoutX="597.0" layoutY="19.0">
          <image>
             <Image url="@images/remove-icon-17.png" />
