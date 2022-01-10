@@ -106,7 +106,7 @@
                </children>
             </Pane>
             <Button fx:id="addBook_btn" layoutX="63.0" layoutY="549.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #00BF00; -fx-text-fill: #fff; -fx-background-radius: 50;" text="ADD Book" />
-            <Button fx:id="removeBook_btn" layoutX="63.0" layoutY="636.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #C80D32; -fx-text-fill: #fff; -fx-background-radius: 50;" text="REMOVE Book" />
+            <Button fx:id="PromoteToManager" layoutX="63.0" layoutY="636.0" mnemonicParsing="false" onMouseClicked="#changePrivildege" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #C80D32; -fx-text-fill: #fff; -fx-background-radius: 50;" text="To Manager" />
             <Separator layoutX="209.0" orientation="VERTICAL" prefHeight="802.0" prefWidth="24.0" />
             <Button fx:id="editBook_btn" layoutX="64.0" layoutY="594.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #800060; -fx-text-fill: #fff; -fx-background-radius: 50;" text="EDIT Book" />
             <Button fx:id="top5" layoutX="52.0" layoutY="724.0" mnemonicParsing="false" onMouseClicked="#top5Customers" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: #C1E4F7; -fx-background-radius: 10;" text=" Top 5 customers" />

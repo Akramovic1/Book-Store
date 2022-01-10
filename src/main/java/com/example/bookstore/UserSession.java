@@ -13,13 +13,14 @@ import java.util.HashMap;
 
 public class UserSession {
     private static UserSession session;
-    private User user;
-    private Book book;
-    private ArrayList<Book> books;
-    private HashMap<Book, Integer> cart;
-    private String message;
+    private User user=new User();
+    private Book book=new Book();
+    private ArrayList<Book> books=new ArrayList<>();
+    private HashMap<Book, Integer> cart=new HashMap<>();
+    private String message="";
 
     private UserSession() {
+
     }
 
     public User getUser() {
@@ -66,7 +67,6 @@ public class UserSession {
         if (session == null) {
             session = new UserSession();
         }
-
         return session;
     }
 }

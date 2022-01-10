@@ -1,8 +1,11 @@
 package com.example.bookstore;
 
+import com.example.bookstore.dao.DBO;
+import com.example.bookstore.dao.selecting;
 import com.example.bookstore.model.Author;
 import com.example.bookstore.model.Book;
 import com.example.bookstore.model.Publisher;
+import com.example.bookstore.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -72,7 +75,7 @@ public class MainController implements Initializable {
     private Button addBook_btn;
 
     @FXML
-    private Button removeBook_btn;
+    private Button PromoteToManager;
 
     @FXML
     private ScrollPane scrollpane;
@@ -93,6 +96,36 @@ public class MainController implements Initializable {
     private Button top10books;
 
     private List<Book> booksList;
+
+    /*@Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        booksList = new ArrayList<>(books());
+        int col = 1;
+        int row = 1;
+        System.out.println("Enter0");
+        try{
+            for(Book book : booksList){
+                System.out.println("Enter1");
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("bookSmall.fxml"));
+                VBox box = fxmlLoader.load();
+                BookSmallController bookController = fxmlLoader.getController();
+                bookController.setData(book);
+                if (col == 6){
+                    col = 1;
+                    row++;
+                }
+                bookContainer.add(box, col++, row);
+                User user = UserSession.getSession().getUser();
+                top5.setVisible(user.isManager());
+                totalsales.setVisible(user.isManager());
+                top10books.setVisible(user.isManager());
+                GridPane.setMargin(box, new Insets(20));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -115,15 +148,20 @@ public class MainController implements Initializable {
                 }
                 bookContainer.add(box, col++, row);
                 GridPane.setMargin(box, new Insets(20));
+                User user = UserSession.getSession().getUser();
+                top5.setVisible(user.isManager());
+                totalsales.setVisible(user.isManager());
+                top10books.setVisible(user.isManager());
+                PromoteToManager.setVisible(user.isManager());
+                GridPane.setMargin(box, new Insets(20));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
     private List<Book> books(){
-        List<Book> books = new ArrayList<>();
+        /*List<Book> books = new ArrayList<>();
         Book book = new Book();
         Author author = new Author(0, "Ahmed");
         List<Author> authors = new ArrayList<>();
@@ -144,6 +182,9 @@ public class MainController implements Initializable {
         books.add(book);
         books.add(book);
         books.add(book);
+        return books;*/
+        selecting db = new selecting();
+        List<Book> books = db.searchBooksByCategory("Science");
         return books;
     }
     @FXML
@@ -229,6 +270,16 @@ public class MainController implements Initializable {
             connection.close();
         }
         catch (Exception e){}
+    }
+
+    @FXML
+    void changePrivildege(){
+        DBO dbo = new DBO();
+        User user=UserSession.getSession().getUser();
+        User u = dbo.makeManager(user);
+        if (u!=null){
+            UserSession.getSession().setUser(u);
+        }
     }
 
 }

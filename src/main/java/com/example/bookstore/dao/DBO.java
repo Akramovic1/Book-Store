@@ -280,6 +280,16 @@ public class DBO implements DBOInterfac{
         return executeUpdate(sql);
     }
 
+    public User makeManager(User user){
+        String sql;
+        sql = "update user_info set privilege = \""+true+"\" where user_id = \""+user.getUser_id()+"\"";
+        user.setPrivilege(true);
+        if( executeUpdate(sql)){
+            return user;
+        }
+        else return null;
+    }
+
     public static void main(String[] args) throws SQLException {
         DBO dbo=new DBO();
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "test", "test");
