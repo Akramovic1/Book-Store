@@ -13,8 +13,8 @@ import java.sql.*;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1315, 890);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("signin.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 748, 519);
         stage.setTitle("BOOK STORE");
         stage.setScene(scene);
         stage.show();
