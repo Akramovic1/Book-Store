@@ -26,7 +26,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Button fx:id="remove_btn" layoutX="95.0" layoutY="168.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" style="-fx-background-radius: 50;" text="Remove" />
+            <Button fx:id="remove_btn" layoutX="95.0" layoutY="168.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" style="-fx-background-radius: 50; -fx-background-color: #C80D32; -fx-text-fill: white;" text="Remove" />
             <TextField fx:id="isbn" layoutX="33.0" layoutY="98.0" prefHeight="25.0" prefWidth="227.0" promptText="Book’s ISBN number" style="-fx-background-radius: 35;" />
          </children>
       </Pane>

@@ -46,7 +46,7 @@ public class SignUpController {
 
     @FXML
     private Button SignUp_btn;
-    
+
     @FXML
     private Button signin;
 
