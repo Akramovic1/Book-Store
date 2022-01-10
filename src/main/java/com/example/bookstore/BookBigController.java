@@ -114,7 +114,7 @@ public class BookBigController {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cart.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 543, 542);
+            Scene scene = new Scene(fxmlLoader.load(), 646, 400);
             dialogStage.setScene(scene);
             dialogStage.show();
         }catch(Exception e) {

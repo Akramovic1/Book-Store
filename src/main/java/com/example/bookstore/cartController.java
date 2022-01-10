@@ -58,9 +58,29 @@ public class cartController {
 
     public void remove() {
         String value=cartList.getSelectionModel().getSelectedItem();
+        HashMap<Book,Integer> cart = UserSession.getSession().getCart();
         if (value!=null){
-            String[] values=value.split(",");
-            
+            ////
+            int selectedIdx=cartList.getSelectionModel().getSelectedIndex();
+            final int newSelectedIdx =
+                    (selectedIdx == cartList.getItems().size() - 1)
+                            ? selectedIdx - 1
+                            : selectedIdx;
+
+            cartList.getItems().remove(selectedIdx);
+            initialize();
+            /////
+            /*String[] values=value.split(",");
+            String id =values[0];
+            float totalSum=0;
+            for (Map.Entry<Book, Integer> set :cart.entrySet()) {
+                if (!set.getKey().getISBN().equals(id)){
+
+                }
+                cartList.getItems().add(set.getKey().getISBN()+","+set.getKey().getTitle()+","+set.getKey().getPrice()+","+set.getKey().getPublisher().getPublisher_name());
+                totalSum+=set.getKey().getPrice();
+            }
+            totalPrice.setText(String.valueOf(totalSum));*/
         }
     }
 }
