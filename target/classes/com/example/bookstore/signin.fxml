@@ -59,11 +59,7 @@
                   </Text>
                   <TextField fx:id="loginMail" layoutX="79.0" layoutY="192.0" prefHeight="26.0" prefWidth="206.0" promptText="Email" style="-fx-background-radius: 30;" />
                   <PasswordField fx:id="loginPassword" layoutX="79.0" layoutY="247.0" prefHeight="26.0" prefWidth="211.0" promptText="Password" style="-fx-background-radius: 30;" />
-<<<<<<< Updated upstream
                   <Button fx:id="SignIn_btn" layoutX="104.0" layoutY="359.0" mnemonicParsing="false" onMouseClicked="#signInClicked" prefHeight="32.0" prefWidth="156.0" style="-fx-background-color: EECABA; -fx-text-fill: black; -fx-background-radius: 30;" text="Sign in" />
-=======
-                  <Button fx:id="SignIn_btn" layoutX="104.0" layoutY="359.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="156.0" style="-fx-background-color: EECABA; -fx-text-fill: black; -fx-background-radius: 30;" text="Sign in" />
->>>>>>> Stashed changes
                </children>
             </Pane>
          </right>

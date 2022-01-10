@@ -12,6 +12,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -59,30 +60,34 @@ public class MainController implements Initializable {
     private ScrollPane scrollpane;
 
     @FXML
+    private ScrollPane cardLayout;
+
+    @FXML
     private GridPane bookContainer;
 
-    private List<Book> booksContainer;
+    private List<Book> booksList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        booksContainer = new ArrayList<>(books());
-        int col = 0;
+        booksList = new ArrayList<>(books());
+        int col = 1;
         int row = 1;
+        System.out.println("Enter0");
+
         try{
-            for(Book book : booksContainer){
-                System.out.println("Enter");
+            for(Book book : booksList){
+                System.out.println("Enter1");
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("bookBig.fxml"));
-                Pane pane = fxmlLoader.load();
-                BookBigController bookBigController = fxmlLoader.getController();
-                bookBigController.setData(book);
-                if (col == 4){
-                    col = 0;
+                fxmlLoader.setLocation(getClass().getResource("bookSmall.fxml"));
+                VBox box = fxmlLoader.load();
+                BookSmallController bookController = fxmlLoader.getController();
+                bookController.setData(book);
+                if (col == 6){
+                    col = 1;
                     row++;
                 }
-                bookContainer.add(pane, col++, row);
-                GridPane.setMargin(pane, new Insets(10));
-
+                bookContainer.add(box, col++, row);
+                GridPane.setMargin(box, new Insets(20));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -107,35 +112,10 @@ public class MainController implements Initializable {
         book.setPublisherName(publisher);
         book.setPublication_year("2020");
         books.add(book);
-        book = new Book();
-        author = new Author(0, "Akram");
-        authors = new ArrayList<>();
-        authors.add(author);
-        book.setAuthors(authors);
-        book.setCatagory("Science");
-        book.setISBN(100000);
-        book.setTitle("Genius");
-        book.setPrice(170);
-        book.setNoCopies(20);
-        book.setThreshold(5);
-        publisher = new Publisher(10, "Alex", "Ahmed Akram", "01149800000");
-        book.setPublisherName(publisher);
-        book.setPublication_year("2022");
         books.add(book);
-        book = new Book();
-        author = new Author(0, "Shawky");
-        authors = new ArrayList<>();
-        authors.add(author);
-        book.setAuthors(authors);
-        book.setCatagory("Science");
-        book.setISBN(100000);
-        book.setTitle("Genius");
-        book.setPrice(170);
-        book.setNoCopies(20);
-        book.setThreshold(5);
-        publisher = new Publisher(10, "Alex", "Ahmed Akram", "01149800000");
-        book.setPublisherName(publisher);
-        book.setPublication_year("2021");
+        books.add(book);
+        books.add(book);
+        books.add(book);
         books.add(book);
         return books;
     }

@@ -30,11 +30,7 @@
                               <Font name="Calibri" size="13.0" />
                            </font>
                         </Label>
-<<<<<<< Updated upstream
                         <Button fx:id="signin" layoutX="158.0" layoutY="59.0" mnemonicParsing="false" onMouseClicked="#signIn" style="-fx-background-radius: 30; -fx-background-color: EAA212;" text="Sign in" />
-=======
-                        <Button fx:id="signin" layoutX="158.0" layoutY="59.0" mnemonicParsing="false" style="-fx-background-radius: 30; -fx-background-color: EAA212;" text="Sign in" />
->>>>>>> Stashed changes
                      </children></Pane>
                   <Text layoutX="107.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book Store" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="164.11328125">
                      <font>
@@ -59,11 +55,7 @@
                   <PasswordField fx:id="password" alignment="TOP_LEFT" layoutX="60.0" layoutY="273.0" prefHeight="26.0" prefWidth="241.0" promptText="Password" style="-fx-border-radius: 50;" />
                   <TextField fx:id="phone" layoutX="60.0" layoutY="319.0" prefHeight="26.0" prefWidth="240.0" promptText="Phone" style="-fx-border-radius: 50;" />
                   <TextField fx:id="address" layoutX="60.0" layoutY="368.0" prefHeight="26.0" prefWidth="240.0" promptText="Address" style="-fx-border-radius: 50;" />
-<<<<<<< Updated upstream
                   <Button fx:id="SignUp_btn" layoutX="116.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#signUp" prefHeight="32.0" prefWidth="145.0" style="-fx-background-color: EECABA; -fx-text-fill: BLACK; -fx-background-radius: 30;" text="Sign Up" />
-=======
-                  <Button fx:id="SignUp_btn" layoutX="116.0" layoutY="430.0" mnemonicParsing="false" onAction="#signUp" prefHeight="32.0" prefWidth="145.0" style="-fx-background-color: EECABA; -fx-text-fill: BLACK; -fx-background-radius: 30;" text="Sign Up" />
->>>>>>> Stashed changes
                </children>
             </Pane>
          </right>
