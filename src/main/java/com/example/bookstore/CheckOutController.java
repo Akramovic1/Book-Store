@@ -54,7 +54,7 @@ public class CheckOutController {
     }
 
     private boolean validate() {
-        if (this.Card_number.getText() != null && this.Expiry_date != null) {
+        if (!this.Card_number.getText().isEmpty() && !this.Expiry_date.getText().isEmpty()) {
             return true;
         } else {
             HelloApplication.showErrorMessage("Incorrect Data");
