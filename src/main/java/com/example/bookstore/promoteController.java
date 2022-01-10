@@ -1,21 +1,21 @@
-package com.example.bookstore.model;
+package com.example.bookstore;
 
-import com.example.bookstore.UserSession;
 import com.example.bookstore.dao.DBO;
+import com.example.bookstore.model.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class removeBookController {
+public class promoteController {
     @FXML
-    private Button remove_btn;
+    private Button promote_btn;
 
     @FXML
-    private TextField isbn;
+    private TextField cutmoerId;
 
     public void promoteUser(){
         DBO dbo = new DBO();
-        User user= dbo.getUserByID(Integer.parseInt(isbn.getText()));
+        User user= dbo.getUserByID(Integer.parseInt(cutmoerId.getText()));
         User u = dbo.makeManager(user);
         if (u!=null){
             UserSession.getSession().setUser(u);

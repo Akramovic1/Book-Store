@@ -36,6 +36,8 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
 
+import static com.example.bookstore.HelloApplication.showWindow;
+
 public class MainController implements Initializable {
     private double xoffset;
 
@@ -95,6 +97,9 @@ public class MainController implements Initializable {
     @FXML
     private Button top10books;
 
+    @FXML
+    private Button editBook_btn;
+
     private List<Book> booksList;
 
     /*@Override
@@ -153,6 +158,8 @@ public class MainController implements Initializable {
                 totalsales.setVisible(user.isManager());
                 top10books.setVisible(user.isManager());
                 PromoteToManager.setVisible(user.isManager());
+                addBook_btn.setVisible(user.isManager());
+                editBook_btn.setVisible(user.isManager());
                 GridPane.setMargin(box, new Insets(20));
             }
         } catch (Exception e) {
@@ -187,6 +194,7 @@ public class MainController implements Initializable {
         List<Book> books = db.searchBooksByCategory("Science");
         return books;
     }
+
     @FXML
     void openCartBtn(MouseEvent event) {
         try {
@@ -234,6 +242,59 @@ public class MainController implements Initializable {
         }
     }
 
+    public void scienceSearch() {
+        selecting db = new selecting();
+        booksList = db.searchBooksByCategory("Science");
+        addToContainer();
+    }
+
+    public void religionSearch() {
+        selecting db = new selecting();
+        booksList = db.searchBooksByCategory("Religion");
+        addToContainer();
+    }
+
+    public void historySearch() {
+        selecting db = new selecting();
+        booksList = db.searchBooksByCategory("History");
+        addToContainer();
+    }
+
+    public void geographySearch() {
+        selecting db = new selecting();
+        booksList = db.searchBooksByCategory("Geography");
+        addToContainer();
+    }
+
+    public void artSearch() {
+        selecting db = new selecting();
+        booksList = db.searchBooksByCategory("Art");
+        addToContainer();
+    }
+
+    private void addToContainer() {
+        bookContainer.getChildren().clear();
+        int col = 1;
+        int row = 1;
+        try{
+            for(Book book : booksList){
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("bookSmall.fxml"));
+                VBox box = fxmlLoader.load();
+                BookSmallController bookController = fxmlLoader.getController();
+                bookController.setData(book);
+                if (col == 6){
+                    col = 1;
+                    row++;
+                }
+                bookContainer.add(box, col++, row);
+                GridPane.setMargin(box, new Insets(20));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     void bookTotalSalesButtonClicked(MouseEvent event) {
         try {
@@ -274,12 +335,18 @@ public class MainController implements Initializable {
 
     @FXML
     void changePrivildege(){
-        DBO dbo = new DBO();
-        User user=UserSession.getSession().getUser();
-        User u = dbo.makeManager(user);
-        if (u!=null){
-            UserSession.getSession().setUser(u);
+        try {
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("promote.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 220);
+            dialogStage.setScene(scene);
+            dialogStage.show();
+        }catch(Exception e) {
+            e.printStackTrace();
         }
     }
+
+
 
 }

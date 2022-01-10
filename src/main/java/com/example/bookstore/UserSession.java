@@ -20,7 +20,11 @@ public class UserSession {
     private String message="";
 
     private UserSession() {
-
+        user=new User();
+        book=new Book();
+        books=new ArrayList<>();
+        cart=new HashMap<>();
+        message="";
     }
 
     public User getUser() {

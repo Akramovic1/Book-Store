@@ -73,11 +73,11 @@
             </Label>
             <Pane layoutX="5.0" layoutY="142.0" prefHeight="362.0" prefWidth="213.0">
                <children>
-                  <Button fx:id="science" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Science" />
-                  <Button fx:id="art" layoutX="8.0" layoutY="80.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Art" />
-                  <Button fx:id="religion" layoutX="8.0" layoutY="140.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Religion" />
-                  <Button fx:id="history" layoutX="8.0" layoutY="201.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="History" />
-                  <Button fx:id="geography" layoutX="8.0" layoutY="261.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Geography" />
+                  <Button fx:id="science" onAction="#scienceSearch" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Science" />
+                  <Button fx:id="art" onAction="#artSearch" layoutX="8.0" layoutY="80.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Art" />
+                  <Button fx:id="religion" onAction="#religionSearch" layoutX="8.0" layoutY="140.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Religion" />
+                  <Button fx:id="history" onAction="#historySearch" layoutX="8.0" layoutY="201.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="History" />
+                  <Button fx:id="geography" onAction="#geographySearch" layoutX="8.0" layoutY="261.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Geography" />
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="8.0" layoutY="14.0">
                      <image>
                         <Image url="@images/62984-200.png" />
@@ -106,7 +106,7 @@
                </children>
             </Pane>
             <Button fx:id="addBook_btn" layoutX="63.0" layoutY="549.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #00BF00; -fx-text-fill: #fff; -fx-background-radius: 50;" text="ADD Book" />
-            <Button fx:id="removeBook_btn" layoutX="63.0" layoutY="636.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #C80D32; -fx-text-fill: #fff; -fx-background-radius: 50;" text="REMOVE Book" />
+            <Button fx:id="PromoteToManager" layoutX="63.0" layoutY="636.0" mnemonicParsing="false" onMouseClicked="#changePrivildege" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #C80D32; -fx-text-fill: #fff; -fx-background-radius: 50;" text="To Manager" />
             <Separator layoutX="209.0" orientation="VERTICAL" prefHeight="802.0" prefWidth="24.0" />
             <Button fx:id="editBook_btn" layoutX="64.0" layoutY="594.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="99.0" style="-fx-background-color: #800060; -fx-text-fill: #fff; -fx-background-radius: 50;" text="EDIT Book" />
             <Button fx:id="top5" layoutX="52.0" layoutY="724.0" mnemonicParsing="false" onMouseClicked="#top5Customers" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: #C1E4F7; -fx-background-radius: 10;" text=" Top 5 customers" />

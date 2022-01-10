@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="220.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bookstore.promoteController">
    <children>
       <Pane prefHeight="222.0" prefWidth="309.0">
          <children>
@@ -21,13 +21,13 @@
       </Pane>
       <Pane layoutX="309.0" prefHeight="220.0" prefWidth="292.0">
          <children>
-            <Label layoutX="28.0" layoutY="25.0" text="Remove Book ">
+            <Label layoutX="28.0" layoutY="25.0" text="Promote To Manager ">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Button fx:id="remove_btn" layoutX="95.0" layoutY="168.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" style="-fx-background-radius: 50; -fx-background-color: #C80D32; -fx-text-fill: white;" text="Remove" />
-            <TextField fx:id="isbn" layoutX="33.0" layoutY="98.0" prefHeight="25.0" prefWidth="227.0" promptText="Book’s ISBN number" style="-fx-background-radius: 35;" />
+            <Button fx:id="promote_btn" layoutX="95.0" layoutY="168.0" mnemonicParsing="false" onMouseClicked="#promoteUser" prefHeight="25.0" prefWidth="82.0" style="-fx-background-radius: 50; -fx-background-color: #C80D32; -fx-text-fill: white;" text="Promote" />
+            <TextField fx:id="cutmoerId" layoutX="33.0" layoutY="98.0" prefHeight="25.0" prefWidth="227.0" promptText="New Manager ID" style="-fx-background-radius: 35;" />
          </children>
       </Pane>
    </children>

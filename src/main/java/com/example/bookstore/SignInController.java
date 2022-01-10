@@ -53,6 +53,7 @@ public class SignInController {
         if (user != null) {
             // if exists in database without errors
             try {
+                UserSession.getSession().setUser(user);
                 ((Node) event.getSource()).getScene().getWindow().hide();
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main.fxml"));
                 Parent root1 = fxmlLoader.load();
@@ -67,7 +68,6 @@ public class SignInController {
                 });
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(new Scene(root1));
-                UserSession.getSession().setUser(user);
                 stage.show();
             } catch (Exception e) {
                 e.printStackTrace();

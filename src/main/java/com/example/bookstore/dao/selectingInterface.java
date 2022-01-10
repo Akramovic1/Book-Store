@@ -24,6 +24,9 @@ public interface selectingInterface {
     List<Book> searchBooksByPublisher(Publisher publisher);
     List<Book> searchBooksByAuthorName(String author_Name);
 
+    List<Book> searchBooksByAuthor(String author_name);
+    List<Book> searchBooksByPublisher(String publisher_name);
+
     List<Author> getAllAuthors();
     List<Publisher> getAllPublishers();
 

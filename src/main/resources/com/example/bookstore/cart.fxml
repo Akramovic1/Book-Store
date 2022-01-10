@@ -26,7 +26,7 @@
             <Image url="@images/remove-icon-17.png" />
          </image>
       </ImageView>
-      <Button fx:id="removeBookCart_btn" layoutX="597.0" layoutY="18.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: transparent;" />
+      <Button fx:id="removeBookCart_btn" layoutX="597.0" layoutY="18.0" mnemonicParsing="false" onAction="#remove" prefHeight="25.0" prefWidth="28.0" style="-fx-background-color: transparent;" />
       <Label fx:id="totalPrice" layoutX="349.0" layoutY="345.0" prefHeight="17.0" prefWidth="99.0" text="Total 2500$">
          <font>
             <Font size="16.0" />

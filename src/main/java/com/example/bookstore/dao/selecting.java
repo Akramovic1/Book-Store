@@ -112,12 +112,14 @@ public class selecting implements selectingInterface{
         try {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM bookstore.book WHERE isbn="+isbn);
             resultSet.next();
-            Publisher publisher=getPublisher(resultSet.getInt("publisher_id"));
-            List<Author> authors=getAuthorsOfBook(isbn);
             b =new Book(resultSet.getInt("isbn"),resultSet.getString("title"),
                     resultSet.getInt("num_of_copies"),resultSet.getInt("threshold"),
-                    resultSet.getString("category"),publisher,resultSet.getString("publication_year"),
-                    resultSet.getFloat("selling_price"),authors);
+                    resultSet.getString("category"),null,resultSet.getString("publication_year"),
+                    resultSet.getFloat("selling_price"),null);
+            Publisher publisher=getPublisher(resultSet.getInt("publisher_id"));
+            b.setPublisherName(publisher);
+            List<Author> authors=getAuthorsOfBook(isbn);
+            b.setAuthors(authors);
             return b;
         }
         catch (Exception e){
@@ -190,6 +192,24 @@ public class selecting implements selectingInterface{
         return books;
     }
 
+    public List<Book> searchBooksByAuthor(String author_name){
+        List<Author> authors = getAuthorByName(author_name);
+        List<Book> books=new ArrayList<>();
+        for (int i = 0; i < authors.size(); i++) {
+            books.addAll(searchBooksByAuthor(authors.get(i)));
+        }
+        return books;
+    }
+
+    public List<Book> searchBooksByPublisher(String publisher_name){
+        List<Publisher> publishers = getPublisherByName(publisher_name);
+        List<Book> books=new ArrayList<>();
+        for (int i = 0; i < publishers.size(); i++) {
+            books.addAll(searchBooksByPublisher(publishers.get(i)));
+        }
+        return books;
+    }
+
     public List<Book> searchBooksByAuthorName(String author_Name){
         List<Author> authors= getAuthorByName(author_Name);
         List<Book> books=new ArrayList<>();
@@ -216,10 +236,15 @@ public class selecting implements selectingInterface{
 
     public List<Book> searchBooksByCategory(String category){
         List<Book> books=new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
         try {
             ResultSet resultSet = statement.executeQuery("SELECT isbn FROM bookstore.book WHERE category LIKE \"%"+category+"%\"");
             while (resultSet.next()) {
-                books.add(getBook(resultSet.getInt("isbn")));
+                temp.add(resultSet.getInt("isbn"));
+            }
+
+            for (Integer i : temp) {
+                books.add(getBook(i));
             }
             return books;
         }

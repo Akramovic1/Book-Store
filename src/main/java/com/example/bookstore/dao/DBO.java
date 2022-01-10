@@ -56,7 +56,7 @@ public class DBO implements DBOInterfac{
         selecting s =new selecting();
         if (isCompleteBook(b)) {
             String sql = "insert into book (title,publisher_id,publication_year,selling_price,category,num_of_copies,threshold)values(\""
-                    + b.getTitle() + "\",\"" + b.getPublisher() + "\"," + b.getPublication_year() + ",\"" + b.getPrice() +
+                    + b.getTitle() + "\",\"" + b.getPublisher().getPublisher_id() + "\"," + b.getPublication_year() + ",\"" + b.getPrice() +
                     "\",\"" + b.getCatagory() + "\",\"" + b.getNoCopies() + "\",\"" + b.getThreshold() + "\")";
             if (executeUpdate(sql)) {
                 List<Book> books=s.getBooksByTitle(b.getTitle());
@@ -237,6 +237,27 @@ public class DBO implements DBOInterfac{
         }
     }
 
+    public User getUserByID(int id){
+        try {
+            String sql = "SELECT * FROM user_info WHERE user_id = \""+id+"\"";
+            ResultSet resultSet = statement.executeQuery(sql);
+            User user = null;
+            int n=0;
+            while (resultSet.next()&&n<1) {
+                user=new User(resultSet.getString("user_name"), resultSet.getString("password"),
+                        resultSet.getString("Shipping_address"), resultSet.getString("last_name"),
+                        resultSet.getString("first_name"), resultSet.getString("email"),
+                        resultSet.getBoolean("privilege"),resultSet.getString("phone"));
+                user.setUser_id(resultSet.getInt("user_id"));
+                n++;
+            }
+            return user;
+        }
+        catch (Exception e){
+            return null;
+        }
+    }
+
 
     public boolean updateUserUser_name(int user_id,String user_name){
         String sql;
@@ -282,7 +303,7 @@ public class DBO implements DBOInterfac{
 
     public User makeManager(User user){
         String sql;
-        sql = "update user_info set privilege = \""+true+"\" where user_id = \""+user.getUser_id()+"\"";
+        sql = "update user_info set privilege = \""+1+"\" where user_id = \""+user.getUser_id()+"\"";
         user.setPrivilege(true);
         if( executeUpdate(sql)){
             return user;

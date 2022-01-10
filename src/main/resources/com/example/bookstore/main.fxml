@@ -73,11 +73,11 @@
             </Label>
             <Pane layoutX="5.0" layoutY="142.0" prefHeight="362.0" prefWidth="213.0">
                <children>
-                  <Button fx:id="science" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Science" />
-                  <Button fx:id="art" layoutX="8.0" layoutY="80.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Art" />
-                  <Button fx:id="religion" layoutX="8.0" layoutY="140.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Religion" />
-                  <Button fx:id="history" layoutX="8.0" layoutY="201.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="History" />
-                  <Button fx:id="geography" layoutX="8.0" layoutY="261.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Geography" />
+                  <Button fx:id="science" onAction="#scienceSearch" layoutX="8.0" layoutY="14.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Science" />
+                  <Button fx:id="art" onAction="#artSearch" layoutX="8.0" layoutY="80.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Art" />
+                  <Button fx:id="religion" onAction="#religionSearch" layoutX="8.0" layoutY="140.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Religion" />
+                  <Button fx:id="history" onAction="#historySearch" layoutX="8.0" layoutY="201.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="History" />
+                  <Button fx:id="geography" onAction="#geographySearch" layoutX="8.0" layoutY="261.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="190.0" styleClass="myButton" stylesheets="@style.css" text="Geography" />
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="8.0" layoutY="14.0">
                      <image>
                         <Image url="@images/62984-200.png" />
