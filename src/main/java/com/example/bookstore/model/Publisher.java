@@ -16,6 +16,10 @@ public class Publisher {
         this.phone_number = phoneNumber;
     }
 
+    public Publisher(int id) {
+        this.publisher_id = id;
+    }
+
     public int getPublisher_id() {
         return publisher_id;
     }
