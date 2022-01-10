@@ -71,7 +71,7 @@ public class selecting implements selectingInterface{
     public List<Publisher> getPublisherByName(String publisher_name){
         List<Publisher> publishers = new ArrayList<>();
         try {
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM bookstore.publisher WHERE author_name LIKE \"%"+publisher_name+"%\"");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM bookstore.publisher WHERE publisher_name LIKE \"%"+publisher_name+"%\"");
             while (resultSet.next()) {
                 publishers.add(new Publisher(resultSet.getInt("publisher_id"),resultSet.getString("publisher_address")
                         ,resultSet.getString("publisher_name"),resultSet.getString("publisher_phone")));
