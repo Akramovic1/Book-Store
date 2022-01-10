@@ -109,4 +109,5 @@ public class User {
     public void setPrivilege(boolean privilege) {
         this.privilege = privilege;
     }
+
 }

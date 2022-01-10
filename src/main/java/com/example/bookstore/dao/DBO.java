@@ -203,18 +203,53 @@ public class DBO implements DBOInterfac{
         }
     }
 
+    public User insertUser(String user_name, String password, String first_name, String last_name,
+                           String email, String phone, String Shipping_address) {
+        selecting s =new selecting();
+        String sql = "insert into user_info (user_name,password,first_name,last_name,email,phone,Shipping_address,privilege)values(\""
+                + user_name + "\",\"" + password + "\",\"" + first_name + "\",\"" + last_name +
+                "\",\"" + email + "\",\"" + phone + "\",\"" + Shipping_address+ "\"," + false + ")";
+        if (executeUpdate(sql)) {
+            return getUserByEmailAndPassword(email, password);
+        }
+        else return null;
+
+    }
+
+    public User getUserByEmailAndPassword(String email,String password){
+        try {
+            String sql = "SELECT * FROM user_info WHERE email = \""+email+"\" AND password = \""+password+"\"";
+            ResultSet resultSet = statement.executeQuery(sql);
+            User user = null;
+            int n=0;
+            while (resultSet.next()&&n<1) {
+                user=new User(resultSet.getString("user_name"), resultSet.getString("password"),
+                        resultSet.getString("Shipping_address"), resultSet.getString("last_name"),
+                        resultSet.getString("first_name"), resultSet.getString("email"),
+                        resultSet.getBoolean("privilege"),resultSet.getString("phone"));
+                n++;
+            }
+            return user;
+        }
+        catch (Exception e){
+            return null;
+        }
+    }
+
     public static void main(String[] args) throws SQLException {
         DBO dbo=new DBO();
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "test", "test");
         Statement statement = connection.createStatement();
 
-        dbo.insertRecordsInPUBLISHER();
+        /*dbo.insertRecordsInPUBLISHER();
 
         ResultSet resultSet = statement.executeQuery("SELECT * FROM bookstore.publisher");
         while (resultSet.next()) {
             System.out.println(resultSet.getString("publisher_name") + resultSet.getString("publisher_address"));
         }
-        //Book b= new Book(10,"harrypotter",5,2,"Art",);
+        //Book b= new Book(10,"harrypotter",5,2,"Art",);*/
+        System.out.println(dbo.insertUser("MomenIbrahim", "1234567890", "Momen", "Ibrahim",
+                "MomenIbrahim2000@gmail.com", "01220662659", "Alexandria"));
     }
 
 }

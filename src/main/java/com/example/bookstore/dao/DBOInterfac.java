@@ -27,4 +27,8 @@ public interface DBOInterfac {
     boolean confirmOrder(int orderID);
     boolean payForBook(UserSession userSession, int cardNo, String ExpiryDate);
 
+    User getUserByEmailAndPassword(String email,String password);
+    User insertUser(String user_name, String password, String first_name, String last_name,
+                    String email, String phone, String Shipping_address);
+
 }

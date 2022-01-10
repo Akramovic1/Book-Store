@@ -20,7 +20,7 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    
+
     public static void showWindow(String newWindow, String title, int v1, int v2) {
         try {
             Stage stage = new Stage();

@@ -1,5 +1,7 @@
 package com.example.bookstore;
 
+import com.example.bookstore.dao.DBO;
+import com.example.bookstore.model.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -78,44 +80,52 @@ public class SignUpController {
         String phone=this.phone.getText();
         String email=this.emailText.getText();
         String address=this.address.getText();
-//        if (correctEmailAddress(email)&&correctPassword(password)){
-//
-//        }
-//        else {
-//            //show wrong message
-//            //stay in the same pane.
-//        }
-        try {// if correctEmailAddress && correctPassword
-            ((Node) event.getSource()).getScene().getWindow().hide();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main.fxml"));
-            Parent root1 = fxmlLoader.load();
-            Stage stage = new Stage();
-            root1.setOnMousePressed(event1 -> {
-                xoffset = event1.getSceneX();
-                yoffset = event1.getSceneY();
-            });
-            root1.setOnMouseDragged(e -> {
-                stage.setX(e.getScreenX() - xoffset);
-                stage.setY(e.getScreenY() - yoffset);
-            });
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(new Scene(root1));
-            stage.show();
-        }catch(Exception e) {
-            e.printStackTrace();
+        boolean right=true;
+        if (!(correctEmailAddress(email)&&correctPassword(password))) {
+            right=false;
+            System.out.println("wrong checks");
         }
-        //else error
-//        try {
-//            Stage dialogStage = new Stage();
-//            dialogStage.initModality(Modality.WINDOW_MODAL);
-//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("failedSignUp.fxml"));
-//            Scene scene = new Scene(fxmlLoader.load(), 400, 300);
-//            dialogStage.setScene(scene);
-//            dialogStage.show();
-//        }catch(Exception e) {
-//           e.printStackTrace();
-//        }
-
+        DBO dao = new DBO();
+        User user = dao.insertUser(username,password,firstName,lastName,email,phone,address);
+        if (user == null) {
+            right=false;
+            System.out.println("no user");
+        }
+        if (right) {
+            try {// if correctEmailAddress && correctPassword
+                ((Node) event.getSource()).getScene().getWindow().hide();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main.fxml"));
+                Parent root1 = fxmlLoader.load();
+                Stage stage = new Stage();
+                root1.setOnMousePressed(event1 -> {
+                    xoffset = event1.getSceneX();
+                    yoffset = event1.getSceneY();
+                });
+                root1.setOnMouseDragged(e -> {
+                    stage.setX(e.getScreenX() - xoffset);
+                    stage.setY(e.getScreenY() - yoffset);
+                });
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(new Scene(root1));
+                UserSession.getSession().setUser(user);
+                stage.show();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            //else error
+            try {
+                Stage dialogStage = new Stage();
+                dialogStage.initModality(Modality.WINDOW_MODAL);
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("failedSignUp.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 400, 300);
+                dialogStage.setScene(scene);
+                dialogStage.show();
+            }catch(Exception e) {
+               e.printStackTrace();
+            }
+        }
     }
     @FXML
     void signIn(MouseEvent event) {
