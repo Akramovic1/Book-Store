@@ -185,6 +185,7 @@ public class MainController implements Initializable {
             root1.setOnMouseDragged(e->{ stage.setX(e.getScreenX()-xoffset);stage.setY(e.getScreenY()-yoffset); });
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root1));
+            UserSession.getSession().setUser(null);
             stage.show();
 
         } catch(Exception e) {
