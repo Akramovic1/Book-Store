@@ -15,6 +15,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -25,6 +27,11 @@ import javafx.scene.Scene;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class MainController implements Initializable {
     private double xoffset;
@@ -183,6 +190,44 @@ public class MainController implements Initializable {
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    void bookTotalSalesButtonClicked(MouseEvent event) {
+        try {
+            Connection connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "test", "test");
+            String path="totalSalesPrevMonth.jrxml";
+            JasperReport jr = JasperCompileManager.compileReport(path);
+            JasperPrint jp = JasperFillManager.fillReport(jr,null,connection);
+            JasperViewer.viewReport(jp,false);
+            connection.close();
+        }
+        catch (Exception e){}
+    }
+
+    @FXML
+    void top5Customers(MouseEvent event) {
+        try {
+            Connection connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "test", "test");
+            String path="top5Customers.jrxml";
+            JasperReport jr = JasperCompileManager.compileReport(path);
+            JasperPrint jp = JasperFillManager.fillReport(jr,null,connection);
+            JasperViewer.viewReport(jp,false);
+            connection.close();
+        }
+        catch (Exception e){}
+    }
+    @FXML
+    void top10SellingBooks(MouseEvent event) {
+        try {
+            Connection connection= DriverManager.getConnection("jdbc:mysql://localhost:3306/bookstore", "test", "test");
+            String path="top10SellingsBooks.jrxml";
+            JasperReport jr = JasperCompileManager.compileReport(path);
+            JasperPrint jp = JasperFillManager.fillReport(jr,null,connection);
+            JasperViewer.viewReport(jp,false);
+            connection.close();
+        }
+        catch (Exception e){}
     }
 
 }

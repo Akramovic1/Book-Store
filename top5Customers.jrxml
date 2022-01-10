@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name=" top5Customers" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13acf49e-4913-4d1b-bccc-113817ad15d1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT user_id,count(user_id)
+FROM book_order
+GROUP BY user_id 
+ORDER BY count(user_id) DESC LIMIT 5]]>
+	</queryString>
+	<field name="user_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="user_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="user_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="book_order"/>
+	</field>
+	<field name="count(user_id)" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="count(user_id)"/>
+		<property name="com.jaspersoft.studio.field.label" value="count(user_id)"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="4" y="0" width="451" height="95" backcolor="#000000" uuid="4630d9b5-8f09-4959-80b7-09e919446f80"/>
+				<staticText>
+					<reportElement style="Title" x="-30" y="0" width="370" height="66" uuid="e561850b-1e7a-4a46-a2f2-0c4c5e056a59"/>
+					<textElement textAlignment="Center">
+						<font size="47" isBold="false"/>
+					</textElement>
+					<text><![CDATA[ Top 5 customers]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="10" y="50" width="441" height="45" uuid="1e41f4c6-cf45-4189-9e12-d207cc5717c9"/>
+					<textElement textAlignment="Left">
+						<font size="19" isBold="false"/>
+					</textElement>
+					<text><![CDATA[The top 5 customers who purchase the most purchase amount in descending order for the last 
+three months ]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="4" y="100" width="451" height="32" forecolor="#000000" backcolor="#0B196B" uuid="853b3cff-829e-42e0-b2f5-91c7c33ed428"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="0" y="0" width="451" height="32" forecolor="#FFFFFF" uuid="61565f98-8763-45eb-aaaf-4fc5ce20448c"/>
+					<textElement textAlignment="Center">
+						<font size="16"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<image>
+				<reportElement x="454" y="0" width="105" height="70" uuid="6c96877a-4a8d-47d5-b447-0d3d06153a7a"/>
+				<imageExpression><![CDATA["C:/Users/momen/Downloads/tryBook.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="86" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="4" y="0" width="551" height="68" forecolor="#B89F7D" backcolor="rgba(0, 0, 0, 0.22745098)" uuid="aad57f1a-d7cc-45ea-abfc-b182d44cc480"/>
+				<staticText>
+					<reportElement x="0" y="0" width="280" height="68" uuid="f3efb248-6110-4a22-8a81-9a98af0f0042"/>
+					<box>
+						<pen lineWidth="2.75"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="22"/>
+					</textElement>
+					<text><![CDATA[user_id]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="280" y="0" width="271" height="68" uuid="daa97911-7ae2-4eb6-885c-07874eeab765"/>
+					<box>
+						<pen lineWidth="2.75"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="22"/>
+					</textElement>
+					<text><![CDATA[Number of Orders]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="85" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="284" height="85" uuid="e60ebdc1-5c35-4703-b9b1-32363cbdab3e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4c7e5fc4-5897-4356-9a65-a9a14c297717"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="3.0"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="19"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{user_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="284" y="0" width="271" height="85" uuid="0a91f3cb-e6c3-4035-8a50-fed2721ee668">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7fcd9a90-6090-49c2-83de-a9db59b4b9b3"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="3.0"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="19"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{count(user_id)}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

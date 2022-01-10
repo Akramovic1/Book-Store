@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="top10SellingsBooks" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="13acf49e-4913-4d1b-bccc-113817ad15d1">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter "/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT isbn,COUNT(isbn)
+from book_order 
+where date BETWEEN (CURRENT_DATE() - 'INTERVAL 3 MONTH') AND CURRENT_DATE()
+GROUP BY isbn 
+ORDER BY COUNT(isbn) DESC LIMIT 10]]>
+	</queryString>
+	<field name="isbn" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="isbn"/>
+		<property name="com.jaspersoft.studio.field.label" value="isbn"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="book_order"/>
+	</field>
+	<field name="COUNT(isbn)" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="COUNT(isbn)"/>
+		<property name="com.jaspersoft.studio.field.label" value="COUNT(isbn)"/>
+	</field>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{isbn}]]></groupExpression>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[$F{COUNT(isbn)}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="4" y="0" width="451" height="95" backcolor="#000000" uuid="636799a9-a9b2-4f61-8367-221d34704483"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="450" height="66" uuid="bd8cbf89-4924-450a-808c-3d4a9143366b"/>
+					<textElement textAlignment="Center">
+						<font size="47" isBold="false"/>
+					</textElement>
+					<text><![CDATA[ Top 10 Selling Books]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="10" y="66" width="441" height="29" uuid="61fab85e-f9eb-4938-934a-fa4a44f9f474"/>
+					<textElement textAlignment="Left">
+						<font size="19" isBold="false"/>
+					</textElement>
+					<text><![CDATA[The top 10 selling books for the last three months ]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="4" y="100" width="451" height="32" forecolor="#000000" backcolor="#0B196B" uuid="b0e1d775-b00e-4fc9-a095-1eb09d92f404"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="0" y="0" width="451" height="32" forecolor="#FFFFFF" uuid="55654be1-303a-4182-9d51-30a221a12b93"/>
+					<textElement textAlignment="Center">
+						<font size="16"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<image>
+				<reportElement x="454" y="0" width="105" height="70" uuid="2ebe022f-290f-4cbb-9ca7-df4d6a4be824"/>
+				<imageExpression><![CDATA["C:/Users/momen/Downloads/tryBook.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="72" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="4" y="0" width="551" height="68" forecolor="#B89F7D" backcolor="rgba(0, 0, 0, 0.22745098)" uuid="a5918fcb-4ad2-4f35-aac8-fa1f38c253be"/>
+				<staticText>
+					<reportElement x="0" y="0" width="280" height="68" uuid="04bde01c-d409-4aa4-8071-649713ada8b1"/>
+					<box>
+						<pen lineWidth="2.75"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="22"/>
+					</textElement>
+					<text><![CDATA[Book ISBN]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="280" y="0" width="271" height="68" uuid="cb2758fd-7749-4944-b244-b17135c83f8d"/>
+					<box>
+						<pen lineWidth="2.75"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="22"/>
+					</textElement>
+					<text><![CDATA[Number of Orders]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="63" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="284" height="63" uuid="3f9bd49a-0dac-49d6-abfc-ffc7fa796d5d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="754b73ab-dc1a-4195-97d8-f89f06dfa8aa"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="3.0"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="19"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{isbn}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="284" y="0" width="271" height="63" uuid="66477036-b497-4546-aea2-f2cef11de86e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b358b6fc-2ceb-4bc3-b84f-75b2469ef4de"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="3.0"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="19"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COUNT(isbn)}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

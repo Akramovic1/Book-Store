@@ -10,6 +10,7 @@ module com.example.bookstore {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
+    requires jasperreports;
 
     opens com.example.bookstore to javafx.fxml;
     exports com.example.bookstore;
