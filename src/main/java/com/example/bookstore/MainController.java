@@ -65,6 +65,15 @@ public class MainController implements Initializable {
     @FXML
     private GridPane bookContainer;
 
+    @FXML
+    private Button top5;
+
+    @FXML
+    private Button totalsales;
+
+    @FXML
+    private Button top10books;
+
     private List<Book> booksList;
 
     @Override
