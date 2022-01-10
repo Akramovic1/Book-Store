@@ -241,6 +241,20 @@ public class MainController implements Initializable {
             e.printStackTrace();
         }
     }
+    
+    public void search() {
+        selecting db = new selecting();
+        String query = search.getText();
+        String[] values = query.split(":");
+        if (values[0].equals("Title"))
+            booksList = db.getBooksByTitle(values[1]);
+        else if (values[0].equals("Author"))
+            booksList = db.searchBooksByAuthorName(values[1]);
+        else if (values[0].equals("Publisher"))
+            booksList = db.searchBooksByPublisher(values[1]);
+        addToContainer();
+
+    }
 
     public void scienceSearch() {
         selecting db = new selecting();
