@@ -54,8 +54,8 @@ public class DBO implements DBOInterfac{
 
     public boolean addNewBook(Book b){
         if (isCompleteBook(b)) {
-            String sql = "insert into book (isbn,title,publisher_id,publication_year,selling_price,category,num_of_copies,threshold)values(\""
-                    + b.getISBN() + "\",\"" + b.getTitle() + "\",\"" + b.getPublisher() + "\"," + b.getPublication_year() + ",\"" + b.getPrice() +
+            String sql = "insert into book (title,publisher_id,publication_year,selling_price,category,num_of_copies,threshold)values(\""
+                    + b.getTitle() + "\",\"" + b.getPublisher() + "\"," + b.getPublication_year() + ",\"" + b.getPrice() +
                     "\",\"" + b.getCatagory() + "\",\"" + b.getNoCopies() + "\",\"" + b.getThreshold() + "\")";
             if (executeUpdate(sql)) {
                 return insertAuthorsOfBook(b.getAuthors(), b.getISBN());
