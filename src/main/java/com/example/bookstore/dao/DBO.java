@@ -227,6 +227,7 @@ public class DBO implements DBOInterfac{
                         resultSet.getString("Shipping_address"), resultSet.getString("last_name"),
                         resultSet.getString("first_name"), resultSet.getString("email"),
                         resultSet.getBoolean("privilege"),resultSet.getString("phone"));
+                user.setUser_id(resultSet.getInt("user_id"));
                 n++;
             }
             return user;
@@ -234,6 +235,49 @@ public class DBO implements DBOInterfac{
         catch (Exception e){
             return null;
         }
+    }
+
+
+    public boolean updateUserUser_name(int user_id,String user_name){
+        String sql;
+            sql = "update user_info set user_name = \""+user_name+"\" where user_id = \""+user_id+"\"";
+            return executeUpdate(sql);
+    }
+
+    public boolean updateUserPassword(int user_id,String password){
+        String sql;
+        sql = "update user_info set password = \""+password+"\" where user_id = \""+user_id+"\"";
+        return executeUpdate(sql);
+    }
+
+    public boolean updateUserFirst_name(int user_id,String first_name){
+        String sql;
+        sql = "update user_info set first_name = \""+first_name+"\" where user_id = \""+user_id+"\"";
+        return executeUpdate(sql);
+    }
+
+    public boolean updateUserLast_name(int user_id,String last_name){
+        String sql;
+        sql = "update user_info set last_name = \""+last_name+"\" where user_id = \""+user_id+"\"";
+        return executeUpdate(sql);
+    }
+
+    public boolean updateUserEmail(int user_id,String email){
+        String sql;
+        sql = "update user_info set email = \""+email+"\" where user_id = \""+user_id+"\"";
+        return executeUpdate(sql);
+    }
+
+    public boolean updateUserPhone(int user_id,String phone){
+        String sql;
+        sql = "update user_info set phone = \""+phone+"\" where user_id = \""+user_id+"\"";
+        return executeUpdate(sql);
+    }
+
+    public boolean updateUserShipping_address(int user_id,String Shipping_address){
+        String sql;
+        sql = "update user_info set Shipping_address = \""+Shipping_address+"\" where user_id = \""+user_id+"\"";
+        return executeUpdate(sql);
     }
 
     public static void main(String[] args) throws SQLException {

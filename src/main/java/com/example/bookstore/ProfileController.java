@@ -1,5 +1,6 @@
 package com.example.bookstore;
 
+import com.example.bookstore.dao.DBO;
 import com.example.bookstore.model.User;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -109,6 +110,7 @@ public class ProfileController implements Initializable  {
 
     @FXML
     void saveChangesBtn(MouseEvent event) {
+        DBO dbo = new DBO();
         userNameF.setEditable(false);
         firstNameF.setEditable(false);
         lastNameF.setEditable(false);
@@ -125,7 +127,40 @@ public class ProfileController implements Initializable  {
         String address=this.addressF.getText();
 
         if (correctEmailAddress(email) && correctPassword(password)){
-            // update data in database
+            User user = UserSession.getSession().getUser();
+            boolean changed = false;
+            if (user.getUser_name()!=userName){
+                dbo.updateUserUser_name(user.getUser_id(),userName);
+                changed=true;
+            }
+            if (user.getFirst_name()!=firstName){
+                dbo.updateUserFirst_name(user.getUser_id(),firstName);
+                changed=true;
+            }
+            if (user.getLast_name()!=lastName){
+                dbo.updateUserLast_name(user.getUser_id(),lastName);
+                changed=true;
+            }
+            if (user.getPassword()!=password){
+                dbo.updateUserPassword(user.getUser_id(),password);
+                changed=true;
+            }
+            if (user.getEmail()!=email){
+                dbo.updateUserEmail(user.getUser_id(),email);
+                changed=true;
+            }
+            if (user.getPhone()!=phone){
+                dbo.updateUserPhone(user.getUser_id(),phone);
+                changed=true;
+            }
+            if (user.getShipping_address()!=address){
+                dbo.updateUserShipping_address(user.getUser_id(),address);
+                changed=true;
+            }
+            if (changed){
+                UserSession.getSession().setUser(dbo.getUserByEmailAndPassword(email, password));
+                init();
+            }
         }
         else {
           //else error
