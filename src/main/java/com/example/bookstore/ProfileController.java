@@ -9,9 +9,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.fxml.FXMLLoader;
+import javafx.stage.Modality;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class ProfileController implements Initializable  {
 //Scene scene = new Scene(fxmlLoader.load(), 543.0, 542.0);
@@ -65,6 +69,21 @@ public class ProfileController implements Initializable  {
         init();
     }
 
+    private boolean correctEmailAddress(String email){
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{3}$";
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
+            return false;
+        return pat.matcher(email).matches();
+    }
+
+    private boolean correctPassword(String password){
+        return password.length()>=8;
+    }
+
     @FXML
     void EditProfileBtn(MouseEvent event) {
         userNameF.setEditable(true);
@@ -93,7 +112,22 @@ public class ProfileController implements Initializable  {
         String phone=this.phoneF.getText();
         String address=this.addressF.getText();
 
-        // update data in database
+        if (correctEmailAddress(email) && correctPassword(password)){
+            // update data in database
+        }
+        else {
+          //else error
+           try {
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("failedSignUp.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 400, 300);
+            dialogStage.setScene(scene);
+            dialogStage.show();
+          }catch(Exception e) {
+            e.printStackTrace();
+          }
+        }
     }
 
 }
