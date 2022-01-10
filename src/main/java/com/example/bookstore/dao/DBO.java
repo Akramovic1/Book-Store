@@ -53,19 +53,27 @@ public class DBO implements DBOInterfac{
     }
 
     public boolean addNewBook(Book b){
+        selecting s =new selecting();
         if (isCompleteBook(b)) {
-            String sql = "insert into book (isbn,title,publisher_id,publication_year,selling_price,category,num_of_copies,threshold)values(\""
-                    + b.getISBN() + "\",\"" + b.getTitle() + "\",\"" + b.getPublisher() + "\"," + b.getPublication_year() + ",\"" + b.getPrice() +
+            String sql = "insert into book (title,publisher_id,publication_year,selling_price,category,num_of_copies,threshold)values(\""
+                    + b.getTitle() + "\",\"" + b.getPublisher() + "\"," + b.getPublication_year() + ",\"" + b.getPrice() +
                     "\",\"" + b.getCatagory() + "\",\"" + b.getNoCopies() + "\",\"" + b.getThreshold() + "\")";
             if (executeUpdate(sql)) {
-                return insertAuthorsOfBook(b.getAuthors(), b.getISBN());
+                List<Book> books=s.getBooksByTitle(b.getTitle());
+                if (books!=null) {
+                    b = books.get(0);
+                    return insertAuthorsOfBook(b.getAuthors(), b.getISBN());
+                }
+                else {
+                    return false;
+                }
             }
             else return false;
         }
         else return false;
     }
 
-    public boolean addNewBookWithInfo(int ISBN, String title, Integer noCopies, Integer threshold,
+    public boolean addNewBookWithInfo( String title, Integer noCopies, Integer threshold,
                                       String category,int publisher_id, String publisher_address, String publisher_name,
                                       String publisher_phoneNumber, String publicationYear, float price,
                                       List<Integer> author_id, List<String> author_Name){
@@ -80,7 +88,7 @@ public class DBO implements DBOInterfac{
                 Author author=new Author(author_id.get(i), author_Name.get(i));
                 authors.add(author);
             }
-            Book book=new Book(ISBN, title, noCopies, threshold,
+            Book book=new Book(0, title, noCopies, threshold,
                     category, publisher, publicationYear, price, authors);
             return addNewBook(book);
         }
