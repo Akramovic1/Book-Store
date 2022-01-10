@@ -159,7 +159,7 @@
                         </Label>
                         <Pane prefHeight="40.0" prefWidth="197.0">
                            <children>
-                              <TextField fx:id="userNameF" layoutY="8.0" prefHeight="25.0" prefWidth="185.0" />
+                              <TextField fx:id="userNameF" editable="false" layoutY="8.0" prefHeight="25.0" prefWidth="185.0" />
                            </children>
                         </Pane>
                      </children>
@@ -182,7 +182,7 @@
                         </Label>
                         <Pane prefHeight="40.0" prefWidth="195.0">
                            <children>
-                              <TextField fx:id="firstNameF" layoutY="8.0" prefHeight="25.0" prefWidth="185.0" />
+                              <TextField fx:id="firstNameF" editable="false" layoutY="8.0" prefHeight="25.0" prefWidth="185.0" />
                            </children>
                         </Pane>
                      </children>
@@ -205,7 +205,7 @@
                         </Label>
                         <Pane prefHeight="40.0" prefWidth="194.0">
                            <children>
-                              <TextField fx:id="lastNameF" layoutY="8.0" prefHeight="25.0" prefWidth="185.0" />
+                              <TextField fx:id="lastNameF" editable="false" layoutY="8.0" prefHeight="25.0" prefWidth="185.0" />
                            </children>
                         </Pane>
                      </children>
@@ -228,7 +228,7 @@
                         </Label>
                         <Pane prefHeight="40.0" prefWidth="194.0">
                            <children>
-                              <PasswordField fx:id="passwordF" layoutY="8.0" prefHeight="25.0" prefWidth="185.0" />
+                              <PasswordField fx:id="passwordF" editable="false" layoutY="8.0" prefHeight="25.0" prefWidth="185.0" />
                            </children>
                         </Pane>
                      </children>
@@ -266,7 +266,7 @@
                         </Label>
                         <Pane prefHeight="52.0" prefWidth="152.0">
                            <children>
-                              <TextField fx:id="emailF" layoutY="8.0" prefHeight="25.0" prefWidth="185.0" />
+                              <TextField fx:id="emailF" editable="false" layoutY="8.0" prefHeight="25.0" prefWidth="185.0" />
                            </children>
                         </Pane>
                      </children>
@@ -289,7 +289,7 @@
                         </Label>
                         <Pane prefHeight="52.0" prefWidth="152.0">
                            <children>
-                              <TextField fx:id="phoneF" layoutY="8.0" prefHeight="25.0" prefWidth="185.0" />
+                              <TextField fx:id="phoneF" editable="false" layoutY="8.0" prefHeight="25.0" prefWidth="185.0" />
                            </children>
                         </Pane>
                      </children>
@@ -312,7 +312,7 @@
                         </Label>
                         <Pane prefHeight="52.0" prefWidth="152.0">
                            <children>
-                              <TextField fx:id="addressF" layoutY="8.0" prefHeight="25.0" prefWidth="185.0" />
+                              <TextField fx:id="addressF" editable="false" layoutY="8.0" prefHeight="25.0" prefWidth="185.0" />
                            </children>
                         </Pane>
                      </children>
