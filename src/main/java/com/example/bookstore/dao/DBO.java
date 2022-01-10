@@ -73,25 +73,50 @@ public class DBO implements DBOInterfac{
         else return false;
     }
 
-    public boolean addNewBookWithInfo( String title, Integer noCopies, Integer threshold,
-                                      String category,int publisher_id, String publisher_address, String publisher_name,
-                                      String publisher_phoneNumber, String publicationYear, float price,
-                                      List<Integer> author_id, List<String> author_Name){
-
-        if (author_id.size()!=author_Name.size()){
-            return false;
+    public Author insertNewAuthor(String author_Name){
+        selecting s =new selecting();
+        String sql = "insert into authors (author_name)values(\"" + author_Name +  "\")";
+        if (executeUpdate(sql)) {
+            return (s.getAuthorByName(author_Name)).get(0);
         }
-        else {
-            Publisher publisher=new Publisher(publisher_id, publisher_address, publisher_name, publisher_phoneNumber);
-            List<Author> authors=new ArrayList<>();
-            for (int i = 0; i < author_id.size(); i++) {
-                Author author=new Author(author_id.get(i), author_Name.get(i));
-                authors.add(author);
-            }
+        else return null;
+    }
+
+    public Publisher insertNewPublisher(String publisher_name,String publisher_address,String publisher_phone){
+        selecting s =new selecting();
+        String sql = "insert into publisher (publisher_name,publisher_address,publisher_phone)values(\""
+                + publisher_name + "\",\"" + publisher_address + "\"," + publisher_phone + "\")";
+        if (executeUpdate(sql)) {
+            return (s.getPublisherByName(publisher_name)).get(0);
+        }
+        else return null;
+    }
+    public boolean addNewBookWithInfo( String title, Integer noCopies, Integer threshold,
+                                      String category,Publisher publisher, String publicationYear, float price,
+                                      List<Author> authors){
             Book book=new Book(0, title, noCopies, threshold,
                     category, publisher, publicationYear, price, authors);
             return addNewBook(book);
+    }
+
+    public boolean addNewBookWithInfo( String title, Integer noCopies, Integer threshold,
+                                       String category, String publisher_address, String publisher_name,
+                                       String publisher_phoneNumber, String publicationYear, float price,
+                                       List<String> author_Name){
+        selecting s=new selecting();
+        List<Author> bookAuthors=new ArrayList<>();
+        for (int i = 0; i < author_Name.size(); i++) {
+            List<Author> authors=s.getAuthorByName(author_Name.get(i));
+            if (authors.size()==0){
+                bookAuthors.add(insertNewAuthor(author_Name.get(i)));
+            }
+            else {
+                bookAuthors.addAll(authors);
+            }
         }
+        Publisher publisher=insertNewPublisher(publisher_name,publisher_address,publisher_phoneNumber);
+        return addNewBookWithInfo(title,noCopies,threshold,category,publisher,publicationYear,price,bookAuthors);
+
     }
 
     private boolean isCompleteUser(User user){
