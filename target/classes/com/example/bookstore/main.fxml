@@ -112,7 +112,7 @@
       </Pane>
    </left>
    <center>
-      <Pane prefHeight="810.0" prefWidth="1095.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="810.0" prefWidth="1095.0" style="-fx-background-color: F4F4F4;" BorderPane.alignment="CENTER">
          <children>
             <Separator layoutX="4.0" prefHeight="17.0" prefWidth="1089.0" />
             <Label layoutX="38.0" layoutY="49.0" text="Books">
