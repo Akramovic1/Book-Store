@@ -18,8 +18,19 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+
 
 public class MainController implements Initializable {
+    private double xoffset;
+
+    private double yoffset;
+
     @FXML
     private Button profile_btn;
 
@@ -128,4 +139,50 @@ public class MainController implements Initializable {
         books.add(book);
         return books;
     }
+    @FXML
+    void openCartBtn(MouseEvent event) {
+        try {
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("cart.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 646, 400);
+            dialogStage.setScene(scene);
+            dialogStage.show();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void openProfileBtn(MouseEvent event) {
+        try {
+            Stage dialogStage = new Stage();
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profile.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 543, 542);
+            dialogStage.setScene(scene);
+            dialogStage.show();
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void signoutBtnClicked(MouseEvent event) {
+        try {
+            ((Node) event.getSource()).getScene().getWindow().hide();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("signin.fxml"));
+            Parent root1 = fxmlLoader.load();
+            Stage stage = new Stage();
+            root1.setOnMousePressed(event1 -> { xoffset=event1.getSceneX();yoffset=event1.getSceneY(); });
+            root1.setOnMouseDragged(e->{ stage.setX(e.getScreenX()-xoffset);stage.setY(e.getScreenY()-yoffset); });
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root1));
+            stage.show();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
