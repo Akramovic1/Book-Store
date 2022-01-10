@@ -1,5 +1,6 @@
 package com.example.bookstore;
 
+import com.example.bookstore.model.Author;
 import com.example.bookstore.model.Book;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class BookSmallController {
+
+    private Book currentBook;
 
     @FXML
     private VBox vboxContainer;
@@ -30,15 +33,24 @@ public class BookSmallController {
     private Button showDetails_btn;
 
     public void setData(Book book){
-        book.setAuthors(book.getAuthors());
-        book.setCatagory(book.getCatagory());
-        book.setISBN(book.getISBN());
-        book.setTitle(book.getTitle());
-        book.setPrice(book.getPrice());
-        book.setNoCopies(book.getNoCopies());
-        book.setThreshold(book.getThreshold());
-        book.setPublisherName(book.getPublisher());
-        book.setPublication_year(book.getPublication_year());
+        currentBook = new Book();
+        currentBook.setAuthors(book.getAuthors());
+        currentBook.setCatagory(book.getCatagory());
+        currentBook.setISBN(book.getISBN());
+        currentBook.setTitle(book.getTitle());
+        currentBook.setPrice(book.getPrice());
+        currentBook.setNoCopies(book.getNoCopies());
+        currentBook.setThreshold(book.getThreshold());
+        currentBook.setPublisherName(book.getPublisher());
+        currentBook.setPublication_year(book.getPublication_year());
+
+        book_name.setText(book.getTitle());
+        StringBuilder sb = new StringBuilder();
+        for (Author author: book.getAuthors())
+            sb.append(author.author_Name).append(" , ");
+        if (!sb.isEmpty())
+            book_author.setText(sb.delete(sb.length()-3, sb.length()).toString());
+
     }
     public void Show(MouseEvent event) {
 //        UserSession userSession = UserSession.getSession();
@@ -47,8 +59,9 @@ public class BookSmallController {
         try {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bookBig.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 500, 500);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("bookItem.fxml"));
+            UserSession.getSession().setBook(currentBook);
+            Scene scene = new Scene(fxmlLoader.load(), 425, 335);
             dialogStage.setScene(scene);
             dialogStage.show();
         }catch(Exception e) {

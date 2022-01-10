@@ -122,6 +122,7 @@ public class BookBigController {
     }
 
     public void initialize(){
+        currentBook=UserSession.getSession().getBook();
         bookName.setText(currentBook.getTitle());
         bookPublisher.setText(currentBook.getPublisher().getPublisher_name());
         publicationYear.setText(currentBook.getPublication_year());
