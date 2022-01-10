@@ -57,7 +57,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="addCart_btn" layoutX="214.0" layoutY="265.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" style="-fx-background-radius: 50;" text="ADD Cart" />
+            <Button fx:id="addCart_btn" layoutX="214.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#addToCart" prefHeight="25.0" prefWidth="125.0" style="-fx-background-radius: 50;" text="ADD Cart" />
          </children>
       </Pane>
    </children>

@@ -106,9 +106,10 @@ public class BookBigController {
                 test = true;
             }
         }
-        if (test) {
+        if (!test) {
             cart.put(currentBook, 1);
         }
+        UserSession.getSession().setCart(cart);
         try {
             Stage dialogStage = new Stage();
             dialogStage.initModality(Modality.WINDOW_MODAL);

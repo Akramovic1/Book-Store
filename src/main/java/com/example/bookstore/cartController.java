@@ -49,7 +49,7 @@ public class cartController {
         HashMap<Book,Integer> cart = UserSession.getSession().getCart();
         float totalSum=0;
         for (Map.Entry<Book, Integer> set :cart.entrySet()) {
-            cartList.getItems().add(set.getKey().getISBN()+","+set.getKey().getTitle()+","+set.getKey().getPrice()+","+set.getKey().getPublisher());
+            cartList.getItems().add(set.getKey().getISBN()+","+set.getKey().getTitle()+","+set.getKey().getPrice()+","+set.getKey().getPublisher().getPublisher_name());
             totalSum+=set.getKey().getPrice();
         }
         totalPrice.setText(String.valueOf(totalSum));
@@ -60,7 +60,7 @@ public class cartController {
         String value=cartList.getSelectionModel().getSelectedItem();
         if (value!=null){
             String[] values=value.split(",");
-
+            
         }
     }
 }
