@@ -56,6 +56,21 @@ public class selecting implements selectingInterface{
         return author;
     }
 
+    public List<Author> getAuthorByName(String author_Name){
+        List<Author> authors = new ArrayList<>();
+        try {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM bookstore.authors WHERE author_name LIKE \"%"+author_Name+"%\"");
+            while (resultSet.next()) {
+                authors.add(new Author(resultSet.getInt("author_id"),resultSet.getString("author_name")));
+            }
+            return authors;
+        }
+        catch (Exception e){
+            //e.printStackTrace();
+        }
+        return authors;
+    }
+
     public List<Integer> getAuthorsIDOfBook(int isbn){
         List<Integer> authors=new ArrayList<>();
         try {
@@ -136,6 +151,60 @@ public class selecting implements selectingInterface{
         List<Book> books=new ArrayList<>();
         try {
             ResultSet resultSet = statement.executeQuery("SELECT isbn FROM bookstore.book WHERE title LIKE \"%"+title+"%\" AND isbn="+isbn);
+            while (resultSet.next()) {
+                books.add(getBook(resultSet.getInt("isbn")));
+            }
+            return books;
+        }
+        catch (Exception e){
+            //e.printStackTrace();
+        }
+        return books;
+    }
+
+    public List<Book> searchBooksByAuthor(Author author){
+        List<Book> books=new ArrayList<>();
+        try {
+            ResultSet resultSet = statement.executeQuery("SELECT isbn FROM bookstore.book_authors WHERE author_id = \""+author.getAuthor_id()+"\"");
+            while (resultSet.next()) {
+                books.add(getBook(resultSet.getInt("isbn")));
+            }
+            return books;
+        }
+        catch (Exception e){
+            //e.printStackTrace();
+        }
+        return books;
+    }
+
+    public List<Book> searchBooksByAuthorName(String author_Name){
+        List<Author> authors= getAuthorByName(author_Name);
+        List<Book> books=new ArrayList<>();
+        for (int i = 0; i < authors.size(); i++) {
+            books.addAll(searchBooksByAuthor(authors.get(i)));
+        }
+        return books;
+    }
+
+    public List<Book> searchBooksByPublisher(Publisher publisher){
+        List<Book> books=new ArrayList<>();
+        try {
+            ResultSet resultSet = statement.executeQuery("SELECT isbn FROM bookstore.book WHERE publisher_id = \""+publisher.getPublisher_id()+"\"");
+            while (resultSet.next()) {
+                books.add(getBook(resultSet.getInt("isbn")));
+            }
+            return books;
+        }
+        catch (Exception e){
+            //e.printStackTrace();
+        }
+        return books;
+    }
+
+    public List<Book> searchBooksByCategory(String category){
+        List<Book> books=new ArrayList<>();
+        try {
+            ResultSet resultSet = statement.executeQuery("SELECT isbn FROM bookstore.book WHERE category LIKE \"%"+category+"%\"");
             while (resultSet.next()) {
                 books.add(getBook(resultSet.getInt("isbn")));
             }

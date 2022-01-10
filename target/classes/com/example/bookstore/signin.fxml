@@ -24,13 +24,8 @@
                   </ImageView>
                   <Pane layoutY="402.0" prefHeight="117.0" prefWidth="372.0" style="-fx-background-color: EECABA;">
                      <children>
-<<<<<<< Updated upstream
                         <Text layoutX="42.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have account ?" />
                         <Button fx:id="signupInLogin_btn" layoutX="209.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#signUpClicked" prefHeight="37.0" prefWidth="76.0" style="-fx-background-color: EAA212; -fx-background-radius: 30;" text="Sign up">
-=======
-                        <Text layoutX="63.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have account ?" />
-                        <Button fx:id="signupInLogin_btn" layoutX="209.0" layoutY="35.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="76.0" style="-fx-background-color: EAA212; -fx-background-radius: 30;" text="Sign up">
->>>>>>> Stashed changes
                            <font>
                               <Font size="14.0" />
                            </font>
