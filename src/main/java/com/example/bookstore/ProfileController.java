@@ -1,5 +1,6 @@
 package com.example.bookstore;
 
+import com.example.bookstore.model.User;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -53,7 +54,7 @@ public class ProfileController implements Initializable  {
     // userNameLabel to be set like :  userNameLabel = new Label(user.name);
     // and all "7" page fields need to be filled using database
     //dummy data
-        userNameLabel.setText("Rana Ayman");
+        /*userNameLabel.setText("Rana Ayman");
         userNameF.setText("Rana");
         firstNameF.setText("Rana");
         lastNameF.setText("Ayman");
@@ -61,6 +62,17 @@ public class ProfileController implements Initializable  {
         emailF.setText("rana@gmail.com");
         phoneF.setText("0123789");
         addressF.setText("Address");
+        */
+        User user = UserSession.getSession().getUser();
+        userNameLabel.setText(user.getUser_name());
+        userNameF.setText(user.getUser_name());
+        firstNameF.setText(user.getFirst_name());
+        lastNameF.setText(user.getLast_name());
+        passwordF.setText(user.getPassword());
+        emailF.setText(user.getEmail());
+        phoneF.setText(user.getPhone());
+        addressF.setText(user.getShipping_address());
+
     }
 
 
